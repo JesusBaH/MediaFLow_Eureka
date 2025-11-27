@@ -2,14 +2,7 @@ FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 WORKDIR /usr/src/app
 
-COPY pom.xml .
-COPY .mvn .mvn
-COPY mvnw .
-COPY mvnw.cmd .
-
-RUN ./mvnw dependency:go-offline
-
-COPY src src
+COPY . .
 
 RUN ./mvnw package -DskipTests
 
